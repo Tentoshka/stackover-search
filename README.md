@@ -1,7 +1,7 @@
 ---
 
-To run 'lein run'
+To run `lein run`
 
 ---
 
-To build 'lein uberjar'
+To build `lein uberjar`
