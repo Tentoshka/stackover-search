@@ -12,6 +12,8 @@
 
                  [http-kit "2.6.0"]
 
-                 [cheshire "5.11.0"]]
+                 [cheshire "5.11.0"]
+
+                 [org.clj-commons/claypoole "1.2.2"]]
   :repl-options {:init-ns stackover.core}
   :main stackover.core)

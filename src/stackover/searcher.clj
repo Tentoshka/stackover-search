@@ -2,7 +2,9 @@
   (:require
    [stackover.helpers :refer [some-in]]
    [org.httpkit.client :as http]
-   [cheshire.core :refer [parse-string]]))
+   [cheshire.core :refer [parse-string]]
+   [com.climate.claypoole :refer [pmap]])
+  (:import (java.util.concurrent Executors)))
 
 (def link "https://api.stackexchange.com/2.2/search?pagesize=100&order=desc&sort=creation&site=stackoverflow&tagged=")
 
@@ -18,7 +20,8 @@
       :items))
 
 (defn search-many [tags]
-  (map search-one tags))
+  (pmap 4 search-one tags))
+
 
 (defn answered-count [tag col]
   (->>
@@ -59,6 +62,8 @@
       (answer tag search-res))))
 
 (comment
+
+  (search-many ["clojure" "java" "clojurescript" "python" "javascript" "go"])
 
   (get-res "clojure")
 
